@@ -1,12 +1,18 @@
 import Header from "@/components/Header";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  const cidades = [
-    { name: "São paulo" },
-    { name: "Argentina" },
-    { name: "Brasília" },
-  ];
+  const [cities, setCities] = useState<any>([])
 
+  useEffect(()=>{
+    axios.get(`${process.env.NEXT_PUBLIC_REACT_BACK}cities`).then((res)=>{
+      setCities(res.data)
+    }
+    ).catch((err)=>{
+      console.log(err.response.message)
+    })
+  },[])
   return (
     <>
       <Header />
@@ -17,7 +23,7 @@ export default function Home() {
             <label htmlFor="cityDe">Cidade de origem:</label>
             <select className="h-10 ml-6" name="Cidade de origem" id="cityDe">
               <option>Selecione uma opção</option>
-              {cidades.map((o, i) => (
+              {cities.map((o:any, i:number) => (
                 <option value={o.name} key={i}>{o.name}</option>
               ))}
             </select>
@@ -26,7 +32,7 @@ export default function Home() {
             <label htmlFor="cityAr">Cidade de destino:</label>
             <select className="h-10 ml-6" name="Cidade de destino" id="cityAr">
               <option value={"select"}>Selecione uma opção</option>
-              {cidades.map((o, i) => (
+              {cities.map((o:any, i:number) => (
                 <option value={o.name} key={i}>{o.name}</option>
               ))}
             </select>
