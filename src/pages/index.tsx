@@ -18,7 +18,7 @@ export default function Home() {
             <select className="h-10 ml-6" name="Cidade de origem" id="cityDe">
               <option>Selecione uma opção</option>
               {cidades.map((o, i) => (
-                <option>{o.name}</option>
+                <option value={o.name} key={i}>{o.name}</option>
               ))}
             </select>
           </div>
@@ -27,7 +27,7 @@ export default function Home() {
             <select className="h-10 ml-6" name="Cidade de destino" id="cityAr">
               <option value={"select"}>Selecione uma opção</option>
               {cidades.map((o, i) => (
-                <option value={o.name}>{o.name}</option>
+                <option value={o.name} key={i}>{o.name}</option>
               ))}
             </select>
           </div>
