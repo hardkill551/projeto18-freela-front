@@ -6,7 +6,7 @@ export default function Home() {
   const [cities, setCities] = useState<any>([])
 
   useEffect(()=>{
-    axios.get(`${process.env.NEXT_PUBLIC_REACT_BACK}cities`).then((res)=>{
+    axios.get(`${process.env.NEXT_PUBLIC_REACT_BACK}/cities`).then((res)=>{
       setCities(res.data)
     }
     ).catch((err)=>{
