@@ -12,7 +12,7 @@ export default function Home() {
     ).catch((err)=>{
       console.log(err.response.message)
     })
-  },[])
+  },[setCities, cities])
   return (
     <>
       <Header />
