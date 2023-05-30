@@ -16,7 +16,6 @@ export default function HostingId() {
 
 
   useEffect(() => {
-    console.log(router.query.id)
     if(router.query.id){
       setError(false)
       axios
@@ -24,7 +23,6 @@ export default function HostingId() {
       .then((res) => {
         
         const info = res.data
-        console.log(info)
         setMainImage(info.photo[0].photo)
         setInfo(info)
       })

@@ -84,7 +84,7 @@ export default function Hosting() {
                 />
 
                 <button onClick={() => filterP()}>Filtrar</button>
-                <h3 className={`m-6 mt-12 hover:cursor-pointer ${filter.pool?"font-bold":""}`} onClick={(e:any) => filtrar(e.target.innerHTML)}>Psicina</h3>
+                <h3 className={`m-6 mt-12 hover:cursor-pointer ${filter.pool?"font-bold":""}`} onClick={(e:any) => filtrar(e.target.innerHTML)}>Piscina</h3>
                 <h3 className={`m-6  hover:cursor-pointer ${filter.breakfast?"font-bold":""}`} onClick={(e:any) => filtrar(e.target.innerHTML)}>Café da manhã</h3>
                 <h3 className={`m-6  hover:cursor-pointer ${filter.airConditioning?"font-bold":""}`} onClick={(e:any) => filtrar(e.target.innerHTML)}>Ar condicionado</h3>
                 <h3 className={`m-6  hover:cursor-pointer ${filter.parking?"font-bold":""}`} onClick={(e:any) => filtrar(e.target.innerHTML)}>Estacionamento</h3>
@@ -196,52 +196,45 @@ export default function Hosting() {
 
   function filtrar(item: any) {
     let filtro: any = allHosting;
-    if (item === "Psicina") {
-      filtro = filtro.filter((o: any) => {
-        if(filter.pool) return true
-        if (o.pool) {
-          return true
-        }else{
-          return false
-        }
-      });
-
-      setFilter({...filter, pool: !filter.pool})
+    let commodies = filter
+    console.log(commodies)
+    if (item === "Piscina") {
+      commodies = {...filter, pool: !filter.pool}
     }
+   
     if (item === "Estacionamento") {
-      filtro = filtro.filter((o: any) => {
-        if(filter.parking) return true
-        if (o.parking) {
-          return true
-        }else{
-          return false
-        }
-      });
-      setFilter({...filter, parking: !filter.parking})
+      commodies = {...filter, parking: !filter.parking}
+
+      commodies = {...filter, parking: !filter.parking}
     }
     if (item === "Ar condicionado") {
-      filtro = filtro.filter((o: any) => {
-        if(filter.airConditioning) return true
-        if (o.airConditioning) {
-          return true
-        }else{
-          return false
-        }
-      });
-      setFilter({...filter, airConditioning: !filter.airConditioning})
+      commodies = {...filter, airConditioning: !filter.airConditioning}
+
     }
     if (item === "Café da manhã") {
-      filtro = filtro.filter((o: any) => {
-        if(filter.breakfast) return true
-        if (o.breakfast) {
-          return true
-        }else{
-          return false
-        }
-      });
-      setFilter({...filter, breakfast: !filter.breakfast})
+      commodies = {...filter, breakfast: !filter.breakfast}
     }
-    
+    if(commodies.parking){
+      filtro = filtro.filter((o: any) => o.parking === true);
+    }else{
+      filtro = filtro.filter((o: any) => o.parking === null  || o.parking === true|| o.parking === false);
+    }
+    if(commodies.breakfast){
+      filtro = filtro.filter((o: any) => o.breakfast === true);
+    }else{
+      filtro = filtro.filter((o: any) => o.breakfast === null || o.breakfast === true || o.breakfast === false);
+    }
+    if(commodies.airConditioning){
+      filtro = filtro.filter((o: any) => o.airConditioning === true);
+    }else{
+      filtro = filtro.filter((o: any) => o.airConditioning === null || o.airConditioning === true || o.airConditioning === false);
+    }
+    if(commodies.pool){
+      filtro = filtro.filter((o: any) => o.pool === true);
+    }else{
+      filtro = filtro.filter((o: any) => o.pool === null || o.pool === true || o.pool === false);
+    }
+    setFilter(commodies)
     TopFilter(topFilter);
     setHosting(filtro);
   }
