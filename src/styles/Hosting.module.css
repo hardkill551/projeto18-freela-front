@@ -1,0 +1,241 @@
+.filter {
+    width: 300px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding-left: 20px;
+  }
+  
+  .filter h2, .filter h1 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    margin-top: 30px;
+  }
+  
+  .filter p {
+    margin-bottom: 5px;
+  }
+  
+  .filter p:hover {
+    margin-bottom: 5px;
+    font-size: 18px;
+  }
+  
+  .filter>div {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+  }
+  
+  .filter>div section {
+    width: 22px;
+    height: 22px;
+    font-size: 22px;
+    cursor: pointer;
+    margin-top: 13px;
+  }
+  
+  .filter>div section:hover {
+    color: var(--darkYellow);
+    transition: 0.3;
+  }
+  
+  .filter h6 {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .filter p:hover,
+  .filter h6:hover {
+    cursor: pointer;
+  }
+  
+  .range {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .range button {
+    background-color: var(--veryDarkYellow);
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 110px;
+    height: 35px;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .range button:hover {
+    background-color: var(--darkYellow);
+    cursor: pointer;
+  }
+  
+  .container {
+    display: flex;
+  }
+  
+  .filter input {
+    width: 110px;
+    margin-top: 10px;
+    height: 30px;
+    border-radius: 3px;
+    border: 1px solid black;
+  }
+  
+  .filter h1:first-child {
+    font-size: 30px;
+    font-weight: 700;
+  }
+  
+  .filter input::-webkit-outer-spin-button,
+  .filter input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  .goBack {
+    width: 22px;
+    height: 22px;
+    font-size: 32px;
+    cursor: pointer;
+    margin-top: 13px;
+    margin-left: 10px;
+  }
+  
+  .goBack:hover{
+    color: var(--darkYellow);
+    transition: 0.3;
+  }
+  
+  .locations {
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+  }
+  
+  .body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .locations h1 {
+    font-size: 30px;
+    margin-top: 40px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    margin-left: 40px;
+  }
+  
+  .locationsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+  }
+  
+  .locationsCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin-right: 20px;
+    width: 200px;
+    margin-bottom: 20px;
+    border: 1px solid var(--white);
+  }
+  
+  .div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 60vw;
+  }
+  
+  .div select {
+    width: 130px;
+    height: 30px;
+    margin-top: 14px;
+    margin-right: 50px;
+    font-size: 11px;
+    background-color: var(--gray);
+    border: 0px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  .locationsCard p {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .locationsCard p:nth-child(4) {
+    font-weight: bold;
+  }
+  
+  .locationsCard h2 {
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  
+  .locationsCard button {
+    background-color: var(--veryDarkYellow);
+    border: 0px;
+    border-radius: 3px;
+    height: 40px;
+    width: 100px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .more button {
+    width: 200px;
+    height: 40px;
+    margin-top: 20px;
+    background-color: var(--veryDarkYellow);
+    border: 1px solid black;
+    border-radius: 5px;
+    font-weight: bold;
+    color: var(--black);
+  }
+  
+  .more button:hover {
+    background-color: var(--darkYellow);
+    cursor: pointer;
+  }
+  
+  .more {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .locationsCard button:hover {
+    cursor: pointer;
+    background-color: var(--darkYellow);
+  
+  }
+  
+  .locationsCard:hover {
+    cursor: pointer;
+    border: 1px solid var(--black);
+  }
+  
+  .sidebar {
+    display: none;
+  }
+  
+  .mobileFilter {
+    display: none;
+  }
+  
+  .noCars {
+    font-size: 25px;
+  }
