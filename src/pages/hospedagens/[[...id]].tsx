@@ -62,7 +62,7 @@ export default function HostingId() {
               : null}
 
             {info ?
-              info.photo.map((o: any, i: any) => <Image onClick={() => setMainImage(o.photo)} src={o.phoyo} alt="Hospedagem" width={198} height={198} />)
+              info.photo.map((o: any, i: any) => <Image onClick={() => setMainImage(o.photo)} key={i} src={o.phoyo} alt="Hospedagem" width={198} height={198} />)
               : null}
           </div>
 

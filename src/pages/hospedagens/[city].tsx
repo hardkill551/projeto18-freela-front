@@ -37,7 +37,7 @@ export default function Hosting() {
       .catch((err) => {
         console.log(err.response.message);
       });
-  },[]);
+  },[router.query.city]);
   return (
     <>
       <Header />
