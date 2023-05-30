@@ -20,6 +20,7 @@ export default function Hosting() {
   const [allHosting, setAllHosting] = useState<string[]>([])
   
   useEffect(() => {
+    
     axios
       .get(`${process.env.NEXT_PUBLIC_REACT_BACK}/hospedagens/${router.query.city}`)
       .then((res) => {
@@ -83,10 +84,10 @@ export default function Hosting() {
                 />
 
                 <button onClick={() => filterP()}>Filtrar</button>
-                <h3 className={`m-6 mt-12 hover:cursor-pointer ${filter.pool?"font-bold":""}`} onClick={(e) => filtrar(e.target.innerHTML)}>Psicina</h3>
-                <h3 className={`m-6  hover:cursor-pointer ${filter.breakfast?"font-bold":""}`} onClick={(e) => filtrar(e.target.innerHTML)}>Café da manhã</h3>
-                <h3 className={`m-6  hover:cursor-pointer ${filter.airConditioning?"font-bold":""}`} onClick={(e) => filtrar(e.target.innerHTML)}>Ar condicionado</h3>
-                <h3 className={`m-6  hover:cursor-pointer ${filter.parking?"font-bold":""}`} onClick={(e) => filtrar(e.target.innerHTML)}>Estacionamento</h3>
+                <h3 className={`m-6 mt-12 hover:cursor-pointer ${filter.pool?"font-bold":""}`} onClick={(e:any) => filtrar(e.target.innerHTML)}>Psicina</h3>
+                <h3 className={`m-6  hover:cursor-pointer ${filter.breakfast?"font-bold":""}`} onClick={(e:any) => filtrar(e.target.innerHTML)}>Café da manhã</h3>
+                <h3 className={`m-6  hover:cursor-pointer ${filter.airConditioning?"font-bold":""}`} onClick={(e:any) => filtrar(e.target.innerHTML)}>Ar condicionado</h3>
+                <h3 className={`m-6  hover:cursor-pointer ${filter.parking?"font-bold":""}`} onClick={(e:any) => filtrar(e.target.innerHTML)}>Estacionamento</h3>
               </div>
             </motion.div>
           )}
@@ -144,6 +145,7 @@ export default function Hosting() {
                       image={o.photos[0].photo}
                       id={o.id}
                       price={o.price}
+                      city={router.query.city}
                     />
                   ))}
               </div>

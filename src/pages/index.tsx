@@ -71,6 +71,6 @@ export default function Home() {
 
   function search(e:any){
     e.preventDefault()
-    router.push(`/${type}/${citySelected.cityDe}/${citySelected.cityAr}`)
+    router.push(`/${type}/${citySelected.cityAr}/${citySelected.cityDe}`)
   }
 }

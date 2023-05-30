@@ -1,0 +1,156 @@
+
+.container{
+  display: flex;
+  padding-top: 20px;
+}
+.allImages{
+  display: flex;
+}
+.allImages>img{
+  margin-top: 20px;
+  width: 40vw;
+  height: 40vw;
+}
+.images{
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  margin-left: 5vw;
+  height: 40vw;
+  width: 15vw;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.images img{
+  margin-right:20px;
+  margin-bottom:20px;
+  width: 14vw;
+  min-height: 14vw;
+  
+}
+
+.images img:hover{
+  cursor: pointer;
+}
+
+.button{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  
+}
+.button button{
+  max-width: 130px;
+  color: var(--white);
+}
+.button button:nth-child(2):hover{
+  background-color: var(--strong-red);
+}
+.button button:nth-child(2){
+  background-color: red;
+}
+.info{
+display: flex;
+flex-direction: column;
+text-align: center;
+margin-top: 60px;
+margin-left: 30px;
+width: 400px;
+}
+.modalUserInfo{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.modalUser{
+  background-color: var(--gray-light);
+  position: fixed;
+  top:calc(50% - 100px);
+  left: calc(50% - 160px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1px solid var(--black);
+  height: fit-content;
+  padding: 10px 5px ;
+  z-index: 1;
+}
+.modalUser p{
+  margin: 5px 0px;
+  font-size: 20px;
+
+}
+.modalUser h1{
+  margin-bottom: 15px;
+}
+.modalButton{
+  width: 100%;
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+.info h1{
+  font-size: 30px;
+  font-weight: bold;
+}
+.specifications p:first-child{
+  margin-top: 50px;
+  font-weight: 700;
+  font-size: 20px;
+}
+.specifications{
+  text-align: justify;
+}
+.specifications p{
+  margin-top: 10px;
+  word-wrap: break-word;
+}
+.info button{
+  background-color: rgb(10, 231, 10);
+  border: 0px;
+  border-radius: 20px;
+  width: 200px;
+  height: 40px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.info a{
+  margin-top: 50px;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.info svg{
+  margin-left: 10px;
+}
+.info button:hover{
+  background-color: rgb(9, 181, 9);
+  cursor: pointer;
+}
+.info>p:nth-child(3){
+  margin-top: 30px;
+  color:green;
+  font-size: 25px;
+  font-weight: bold;
+}
+.delete{
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+.delete button{
+  background-color: var(--strong-red);
+  color: white;
+}
+.delete button:hover{
+  background-color: var(--light-red);
+}
