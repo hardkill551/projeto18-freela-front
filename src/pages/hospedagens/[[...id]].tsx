@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import style from "@/styles/HostingById.module.css"
 import styleError from "@/styles/error.module.css"
 import Image from "next/image"
@@ -10,31 +10,34 @@ export default function HostingId() {
   const [mainImage, setMainImage] = useState<string | null>(null)
   const router = useRouter()
   const [info, setInfo] = useState<any>()
+  const [existInfo, setExistInfo] = useState<boolean>(false)
 
 
 
+  const handleCall = useCallback(async () => {
 
-
-  useEffect(() => {
     if(router.query.id){
-      setError(false)
-      axios
-      .get(`${process.env.NEXT_PUBLIC_REACT_BACK}/hospedagens/${router.query.id[0]}/${router.query.id[1]}`)
-      .then((res) => {
-        
-        const info = res.data
-        setMainImage(info.photo[0].photo)
-        setInfo(info)
+       
+      axios.get(`${process.env.NEXT_PUBLIC_REACT_BACK}/hospedagens/${router.query.id[0]}/${router.query.id[1]}`).then((res:any) => {
+        const information = res.data
+        setMainImage(information[0].photos[0].photo)
+        setInfo(information)
+        setExistInfo(true)
+        console.log(existInfo)
       })
-      .catch((err) => {
-        setError(true)
+      .catch((err:any) => {
+        setExistInfo(false)
         
       });
-    }
-    
-  }, [router, error])
 
-  if (error) {
+    }
+  }, [existInfo])
+
+  useEffect(() => {
+    handleCall()
+  }, [existInfo])
+
+  if (!existInfo) {
     return (
       <>
           <Header />
@@ -57,37 +60,42 @@ export default function HostingId() {
       <div className={style.container}>
         <div className={style.allImages}>
           <div className={style.images}>
-            {info ?
-              <Image src={info.photos[0].photo} onClick={() => setMainImage(info.photos[0].photo)} alt="Hospedagem" width={500} height={500} />
+            {existInfo ?
+              <img src={info[0].photos[0].photo} onClick={() => setMainImage(info[0].photos[0].photo)} alt="Hospedagem" width={500} height={500} />
               : null}
 
-            {info ?
-              info.photo.map((o: any, i: any) => <Image onClick={() => setMainImage(o.photo)} key={i} src={o.phoyo} alt="Hospedagem" width={198} height={198} />)
+            {existInfo  ?
+              info[0].photos.map((o: any, i: any) => {
+                if(i!==0) return <img onClick={() => setMainImage(o.photo)} key={i} src={o.photo} alt="Hospedagem" width={198} height={198} />
+                
+              } )
               : null}
           </div>
 
           {mainImage ?
-            <Image src={mainImage} alt="Hospedagem" width={500} height={500} />
+            <img src={mainImage} alt="Hospedagem" width={500} height={500} />
             : null}
 
 
         </div>
         <div className={style.info}>
-          {info ?
+          {existInfo ?
             <>
-              <h1>{info.title}</h1>
+              <h1>{info[0].name}</h1>
               <div className={style.specifications}>
                 <p>Detalhes da hospedagem:</p>
-                <p>Nome: {info.name}</p>
-                <p>Cidade: {info.city}</p>
-                <p>Preço da diária: {info.price}</p>
-                <p>Psicina: {info.pool}</p>
-                <p>Ar Condicionado: {info.airConditioning}</p>
-                <p>Estacionamento: {info.parking}</p>
-                <p>Descrição: {info.description}</p>
+                <p>Nome: {info[0].name}</p>
+                <p>Cidade: {info[0].city}</p>
+                <p>Preço da diária: {info[0].price}</p>
+                <p>Psicina: {info[0].pool ? "Sim" : "Não"}</p>
+                <p>Ar Condicionado: {info[0].airConditioning ? "Sim" : "Não"}</p>
+                <p>Estacionamento: {info[0].parking ? "Sim" : "Não"}</p>
+                <p>Café da manhã: {info[0].breakfast?"Sim" : "Não"}:</p>
+                <p>Descrição: {info[0].description}</p>
+                
               </div>
-              <p>R$: {parseFloat((info.price / 100).toFixed(2)).toLocaleString('pt-BR', { currency: 'BRL', minimumFractionDigits: 2 })}</p>
-              <button onClick={()=>router.push("/passagens")}>Ver as passagens</button>
+              <p>R$: {parseFloat((info[0].price / 100).toFixed(2)).toLocaleString('pt-BR', { currency: 'BRL', minimumFractionDigits: 2 })}</p>
+              <button className="self-center mt-12" onClick={()=>router.push("/passagens")}>Ver as passagens</button>
               
             </>
             : null}
