@@ -23,7 +23,7 @@ export default function HostingId() {
         setMainImage(information[0].photos[0].photo)
         setInfo(information)
         setExistInfo(true)
-        console.log(existInfo)
+        console.log(information)
       })
       .catch((err:any) => {
         setExistInfo(false)
@@ -85,8 +85,8 @@ export default function HostingId() {
               <div className={style.specifications}>
                 <p>Detalhes da hospedagem:</p>
                 <p>Nome: {info[0].name}</p>
-                <p>Cidade: {info[0].city}</p>
-                <p>Preço da diária: {info[0].price}</p>
+                <p>Cidade: {info[0].cityName}</p>
+                <p>Preço da diária: {parseFloat((info[0].price / 100).toFixed(2)).toLocaleString('pt-BR', { currency: 'BRL', minimumFractionDigits: 2 })}</p>
                 <p>Psicina: {info[0].pool ? "Sim" : "Não"}</p>
                 <p>Ar Condicionado: {info[0].airConditioning ? "Sim" : "Não"}</p>
                 <p>Estacionamento: {info[0].parking ? "Sim" : "Não"}</p>
@@ -95,7 +95,7 @@ export default function HostingId() {
                 
               </div>
               <p>R$: {parseFloat((info[0].price / 100).toFixed(2)).toLocaleString('pt-BR', { currency: 'BRL', minimumFractionDigits: 2 })}</p>
-              <button className="self-center mt-12" onClick={()=>router.push("/passagens")}>Ver as passagens</button>
+              <button className="self-center mt-12" onClick={()=>router.push("/")}>Ver as passagens</button>
               
             </>
             : null}

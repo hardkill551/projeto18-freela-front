@@ -83,17 +83,17 @@ export default function HostingId() {
               <div className={style.specifications}>
                 <p>Detalhes da passagem:</p>
                 <p>Companhia aérea: {info[0].companyName}</p>
-                <p>Cidade de partida: {info[0].cityArName}</p>
-                <p>Cidade destino: {info[0].cityDeName}</p>
-                <p>Preço da diária: {info[0].price}</p>
-                <p>Horário de saída: {info[0].airConditioning}</p>
-                <p>Horário de chegada: {info[0].parking}</p>
-                <p>Café da manhã: {info[0].breakfast}:</p>
-                <p>Descrição: {info[0].description}</p>
+                <p>Cidade de partida: {info[0].cityDeName}</p>
+                <p>Cidade destino: {info[0].cityArName}</p>
+                <p>Preço da diária: {parseFloat((info[0].price / 100).toFixed(2)).toLocaleString('pt-BR', { currency: 'BRL', minimumFractionDigits: 2 })}</p>
+                <p>Data de saída: {info[0].timeDe.substring(0,10)}</p>
+                <p>Horário de saída: {info[0].timeDe.substring(11,16)}</p>
+                <p>Data de volta: {info[0].timeAr.substring(0,10)}</p>
+                <p>Horário da volta: {info[0].timeAr.substring(11,16)}</p>
                 
               </div>
               <p>R$: {parseFloat((info[0].price / 100).toFixed(2)).toLocaleString('pt-BR', { currency: 'BRL', minimumFractionDigits: 2 })}</p>
-              <button className="self-center mt-12" onClick={()=>router.push("/passagens")}>Ver as hospedagens</button>
+              <button className="self-center mt-12" onClick={()=>router.push("/")}>Ver as hospedagens</button>
               
             </>
             : null}
